@@ -87,7 +87,7 @@ class CategoryController extends Controller
                 'name' => 'required|min:6|unique:categories,name,'.$id
             ]
         );
-        Category::where('id', $id)->update($request->only(['name']));
+        Category::query()->where('id', $id)->update($request->only(['name']));
         return redirect()->route('categories.index')->withSuccess('udpate succesfully');
     }
 
